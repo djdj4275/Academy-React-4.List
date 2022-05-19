@@ -54,6 +54,7 @@ class ListClass extends Component {
 
     this.setState({ season: nextSeason });
     // prevState를 통해 this.state의 값을 가져와서 사용하였다
+    // 여기서 prevState가 가리키는것은 this.state
     this.setState((prevState) => ({ inputId: prevState.inputId + 1 }));
   };
 
@@ -85,10 +86,8 @@ class ListClass extends Component {
               <td>아이디</td>
               <td>이름</td>
             </tr>
-            {students.map(
-              (
-                student // 여러줄로 작성할때 ()묶어서 return으로 보냄
-              ) => (
+            {students.map((student) => (
+              // 여러줄로 작성할때 ()묶어서 return으로 보냄
                 <tr key={student.id}>
                   <td>{student.id}</td>
                   <td>{student.name}</td>

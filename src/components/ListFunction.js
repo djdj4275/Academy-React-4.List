@@ -15,9 +15,28 @@ const ListFunction = () => {
     const nextSeason = season.filter((s) => s.id !== id);
     setSeason(nextSeason);
   };
+  const [inputText, setInputText] = useState("");
+  const [inputId, setInputId] = useState("5");
+
+  // changeText
+  const changeText = (e) => {
+    setInputText(e.target.value);
+  }
+
+  // getText
+  const getText = (e) => {
+    const nextSeason = season.concat({
+      id : inputId,
+      text : inputText
+    });
+    setSeason(nextSeason);
+    setInputId(inputId+1);
+  }
 
   return (
     <div>
+      <input type="text" name="inputText" onChange={changeText}></input>
+      <button onClick={getText}>추가</button>
       <ul>
         {season.map((s) => (
           <li
